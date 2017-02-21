@@ -2,3 +2,6 @@
   {{ message }}
 </p>
 <button (click)="changeMessage()">Change the message</button>
+<ul>
+  <li *ngFor="let pokemon of pokemons">{{pokemon.name}}</li>
+</ul>

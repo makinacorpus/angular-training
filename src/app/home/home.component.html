@@ -3,7 +3,7 @@
 </p>
 <button (click)="changeMessage()">Change the message</button>
 <ul>
-  <li *ngFor="let pokemon of pokemons">
+  <li *ngFor="let pokemon of pokemons" [ngClass]="getClasses(pokemon)">
     {{pokemon.name}}
     <strong *ngIf="isStronger(pokemon)">Le plus fort !!</strong>
   </li>

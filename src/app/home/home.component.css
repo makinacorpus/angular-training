@@ -1,0 +1,18 @@
+.grass {
+    color: green;
+}
+.fire {
+    color: orange;
+}
+.electric {
+    color: blue;
+}
+.small {
+    font-size: 10px;
+}
+.medium {
+    font-size: 15px;
+}
+.big {
+    font-size: 22px;
+}

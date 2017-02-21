@@ -14,4 +14,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeMessage() {
+    this.message = 'This is a new message';
+  }
+
 }

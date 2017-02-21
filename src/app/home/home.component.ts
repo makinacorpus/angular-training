@@ -24,4 +24,8 @@ export class HomeComponent implements OnInit {
     this.message = 'This is a new message';
   }
 
+  isStronger(pokemon:any) {
+    let max_pv = Math.max(...this.pokemons.map(pok => pok.pv));
+    return (pokemon.pv == max_pv)
+  }
 }

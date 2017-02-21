@@ -9,6 +9,12 @@ export class HomeComponent implements OnInit {
 
   @Input() message: string;
 
+  private pokemons:any[] = [
+    {id: 1, name: 'Balbusar', pv: 75},
+    {id: 2, name: 'Carapuce', pv: 31},
+    {id: 2, name: 'Salamesh', pv: 18},
+  ];
+
   constructor() { }
 
   ngOnInit() {

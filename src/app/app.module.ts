@@ -13,6 +13,7 @@ import { DetailComponent } from './detail/detail.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'pokemon/:id', component: DetailComponent },
 ];
 
 @NgModule({

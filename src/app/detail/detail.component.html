@@ -1,7 +1,8 @@
 <h2 *ngIf="error">{{error}}</h2>
 <div *ngIf="pokemon">
     <h2>{{pokemon.name}}</h2>
-    <p>PV: {{pokemon.pv}}</p>
-    <p>Size: {{pokemon.size}}</p>
+    <img [src]="pokemon.sprites.front_default" />
+    <p>PV: {{pokemon.base_experience}}</p>
+    <p>Size: {{pokemon.height}}</p>
     <p>Type: {{pokemon.type}}</p>
 </div>

@@ -2,19 +2,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import { of } from 'rxjs/observable/of';
 
 @Injectable()
 export class APIService {
 
+  private cache:any[];
+
   constructor(private http: HttpClient) {}
 
   listAll(): Observable<any[]> {
-    return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/')
-    .pipe(
-      map(res => {
-        return res.results;
-      })
-    )
+    if(!this.cache) {
+      return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/')
+      .pipe(
+        map(res => {
+          this.cache = res.results;
+          return this.cache;
+        })
+      )
+    } else {
+      return of(this.cache);
+    }
   }
 
   get(id:string): Observable<any> {

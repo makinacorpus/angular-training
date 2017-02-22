@@ -1,10 +1,10 @@
-.grass {
+.grass a {
     color: green;
 }
-.fire {
+.fire a {
     color: orange;
 }
-.electric {
+.electric a {
     color: blue;
 }
 .small {

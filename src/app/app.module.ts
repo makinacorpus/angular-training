@@ -12,6 +12,7 @@ import { DetailComponent } from './detail/detail.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'about', component: AboutComponent, pathMatch: 'full' },
+  { path: 'pokemon/:id', component: DetailComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

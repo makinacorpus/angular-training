@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { POKEMONS } from '../config';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
@@ -8,32 +8,19 @@ import { POKEMONS } from '../config';
 })
 export class HomeComponent implements OnInit {
 
-  @Input() message: string;
+  private pokemons:any[] = [];
 
-  private pokemons:any[] = POKEMONS;
-
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-  }
-
-  changeMessage() {
-    this.message = 'This is a new message';
-  }
-
-  isStronger(pokemon:any) {
-    let max_pv = Math.max(...this.pokemons.map(pok => pok.pv));
-    return (pokemon.pv == max_pv)
-  }
-
-  getClasses(pokemon:any) {
-    return {
-      grass: pokemon.type == 'grass',
-      electric: pokemon.type == 'electric',
-      fire: pokemon.type == 'fire',
-      small: pokemon.size < 50,
-      medium: pokemon.size < 100 && pokemon.size >= 50,
-      big: pokemon.size >= 100
-    }
+    this.http.get<any>('http://pokeapi.co/api/v2/pokemon/')
+    .subscribe(res => {
+      this.pokemons = res.results.map(item => {
+        return {
+          id: item.url.split('/').reverse()[1],
+          name: item.name
+        }
+      });
+    });
   }
 }

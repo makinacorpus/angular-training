@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { POKEMONS } from '../config';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-detail',
@@ -15,19 +15,21 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
+    private http: HttpClient,
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      let search = POKEMONS.filter(pokemon => pokemon.id == params['id']);
-      if(search.length==0) {
-        this.error = 'Cannot find this pokemon.';
-      } else if(search.length > 1) {
-        this.error = 'Several pokemons match this id.';
-      } else {
-        this.pokemon = search[0];
-      }
+      this.http.get<any>('http://pokeapi.co/api/v2/pokemon/' + params['id'])
+      .subscribe(res => {
+        let pokemon = res;
+        if(pokemon.detail) {
+          this.error = pokemon.detail;
+        } else {
+          pokemon.type = pokemon.types.filter(type => type.slot==1)[0].type.name;
+          this.pokemon = pokemon;
+        }
+      });
     });
   }
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Http } from '@angular/http';
+import { APIService } from '../api';
 
 @Component({
   selector: 'app-detail',
@@ -16,19 +16,17 @@ export class DetailComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: Http,
+    private api: APIService,
   ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.http.get('http://pokeapi.co/api/v2/pokemon/' + params['id'])
-      .subscribe(res => {
+      this.api.get(params['id'])
+      .subscribe(pokemon => {
         this.isLoading = false;
-        let pokemon = res.json();
-        if(pokemon.detail) {
-          this.error = pokemon.detail;
+        if(pokemon.error) {
+          this.error = pokemon.error;
         } else {
-          pokemon.type = pokemon.types.filter(type => type.slot==1)[0].type.name;
           this.pokemon = pokemon;
         }
       });

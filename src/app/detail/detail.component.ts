@@ -12,6 +12,7 @@ export class DetailComponent implements OnInit {
 
   private pokemon:any;
   private error:string;
+  private isLoading:boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class DetailComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.http.get<any>('https://pokeapi.co/api/v2/pokemon/' + params['id'])
       .subscribe(res => {
+        this.isLoading = false;
         let pokemon = res;
         if(pokemon.detail) {
           this.error = pokemon.detail;

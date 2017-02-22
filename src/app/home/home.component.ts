@@ -9,12 +9,14 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   private pokemons:any[] = [];
+  private isLoading:boolean = true;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.http.get<any>('https://pokeapi.co/api/v2/pokemon/')
     .subscribe(res => {
+      this.isLoading = false;
       this.pokemons = res.results.map(item => {
         return {
           id: item.url.split('/').reverse()[1],

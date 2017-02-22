@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { POKEMONS } from '../config';
 
 @Component({
   selector: 'app-home',
@@ -9,11 +10,7 @@ export class HomeComponent implements OnInit {
 
   @Input() message: string;
 
-  private pokemons:any[] = [
-    {id: 1, name: 'Balbusar', pv: 75, size: 150, type: 'grass'},
-    {id: 2, name: 'Carapuce', pv: 31, size: 45, type: 'electric'},
-    {id: 2, name: 'Salamesh', pv: 18, size: 75, type: 'fire'},
-  ];
+  private pokemons:any[] = POKEMONS;
 
   constructor() { }
 

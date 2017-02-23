@@ -1,0 +1,7 @@
+<p>If you want to report a missing Pokémon, please use this form:</p>
+<form #f="ngForm" (ngSubmit)="sendMail(f.value)">
+    <label>Email <input type="string" name="email" ngModel /></label>
+    <label>Pokémon <input type="string" name="pokemonName" ngModel /></label>
+    <label>Type <input type="string" name="pokemonType" ngModel /></label>
+    <button>Send</button>
+</form>

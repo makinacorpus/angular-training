@@ -1,6 +1,8 @@
-<div *ngIf="isLoading" class="loader-container"><div class="loader">Loading...</div></div>
-<ul>
-  <li *ngFor="let pokemon of pokemons">
-    <a [routerLink]="['/pokemon/', pokemon.id]">{{pokemon.name}}</a>
-  </li>
-</ul>
+<div class="loader" *ngIf="isLoading">
+  <mat-spinner></mat-spinner>
+</div>
+<mat-nav-list>
+  <a mat-list-item *ngFor="let pokemon of pokemons" [routerLink]="['/pokemon/', pokemon.id]">
+    {{pokemon.name}}
+  </a>
+</mat-nav-list>

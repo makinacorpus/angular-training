@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+import { MdlModule } from 'angular2-mdl';
 
 import { APIService } from './api';
 import { AppComponent } from './app.component';
@@ -31,6 +32,7 @@ export const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MdlModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

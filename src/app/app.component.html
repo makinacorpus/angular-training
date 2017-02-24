@@ -1,2 +1,13 @@
-<app-navigation></app-navigation>
-<router-outlet></router-outlet>
+<mdl-layout mdl-layout-fixed-header>
+    <mdl-layout-header>
+        <mdl-layout-header-row>
+            <mdl-layout-title>Pokémons</mdl-layout-title>
+            <mdl-layout-spacer></mdl-layout-spacer>
+            <app-navigation></app-navigation>
+        </mdl-layout-header-row>
+    </mdl-layout-header>
+    <mdl-layout-content>
+        <router-outlet></router-outlet>
+    </mdl-layout-content>
+</mdl-layout>
+

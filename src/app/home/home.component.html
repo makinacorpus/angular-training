@@ -1,6 +1,10 @@
-<div *ngIf="isLoading" class="loader-container"><div class="loader">Loading...</div></div>
-<ul>
-  <li *ngFor="let pokemon of pokemons">
-    <a [routerLink]="['/pokemon/', pokemon.id]">{{pokemon.name}}</a>
-  </li>
-</ul>
+<mdl-spinner [active]="isLoading"></mdl-spinner>
+<mdl-list>
+    <mdl-list-item *ngFor="let pokemon of pokemons" mdl-ripple
+        [routerLink]="['/pokemon/', pokemon.id]">
+        <mdl-list-item-primary-content>
+            <mdl-icon mdl-list-item-avatar>person</mdl-icon>
+            {{pokemon.name}}
+        </mdl-list-item-primary-content>
+    </mdl-list-item>
+</mdl-list>

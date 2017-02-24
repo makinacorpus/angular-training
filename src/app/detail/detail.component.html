@@ -1,9 +1,9 @@
-<div *ngIf="isLoading" class="loader-container"><div class="loader">Loading...</div></div>
+<mdl-spinner [active]="isLoading"></mdl-spinner>
 <h2 *ngIf="error">{{error}}</h2>
-<div *ngIf="pokemon">
+<div mdl-shadow="4" *ngIf="pokemon">
     <h2>{{pokemon.name}}</h2>
     <img [src]="pokemon.sprites.front_default" />
-    <p>PV: {{pokemon.base_experience}}</p>
-    <p>Size: {{pokemon.height}}</p>
+    <p><span [mdl-badge]="pokemon.base_experience">PV</span></p>
+    <p><span [mdl-badge]="pokemon.height">Size</span></p>
     <p>Type: {{pokemon.type}}</p>
 </div>

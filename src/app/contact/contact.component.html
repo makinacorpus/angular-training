@@ -1,7 +1,20 @@
-<p>If you want to report a missing Pokémon, please use this form:</p>
-<form #f="ngForm" (ngSubmit)="sendMail(f.value)">
-    <label>Email <input type="string" name="email" ngModel /></label>
-    <label>Pokémon <input type="string" name="pokemonName" ngModel /></label>
-    <label>Type <input type="string" name="pokemonType" ngModel /></label>
-    <button>Send</button>
-</form>
+<mdl-card mdl-shadow="2">
+    <mdl-card-title>
+      <h2 mdl-card-title-text>Contact</h2>
+    </mdl-card-title>
+    <mdl-card-supporting-text>
+        <p>If you want to report a missing Pokémon, please use this form:</p>
+        <form #f="ngForm" (ngSubmit)="sendMail(f.value)">
+            <p>
+                <mdl-textfield label="Email" type="string" name="email" floating-label ngModel ></mdl-textfield>
+            </p>
+            <p>
+                <mdl-textfield label="Pokémon" type="string" name="pokemonName" floating-label ngModel></mdl-textfield>
+            </p>
+            <p>
+                <mdl-textfield label="Type" type="string" name="pokemonType" floating-label ngModel></mdl-textfield>
+            </p>
+            <button mdl-button mdl-button-type="raised" mdl-colored="primary" mdl-ripple>Send</button>
+        </form>
+    </mdl-card-supporting-text>
+</mdl-card>

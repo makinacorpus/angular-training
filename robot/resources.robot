@@ -8,9 +8,9 @@ Library           Selenium2Library
 
 *** Variables ***
 ${SERVER}         localhost:4200
-${BROWSER}        Firefox
-${DELAY}          0
-${LOGIN URL}      http://${SERVER}/
+${BROWSER}        Chrome
+${DELAY}          2
+${URL}            http://${SERVER}/
 ${BACKEND_DELAY}  3000milliseconds
 
 *** Keywords ***
@@ -20,12 +20,17 @@ ${BACKEND_DELAY}  3000milliseconds
     # Pause execution
 
 Open Application
-    Open Browser    ${LOGIN URL}    ${BROWSER}
+    ${options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
+    Call Method    ${options}    add_argument      disable-web-security
+    Call Method    ${options}    add_argument      allow-running-insecure-content
+
+    Create WebDriver  Chrome    chrome_options=${options}
+    Go To    ${URL}
     Set Selenium Speed    ${DELAY}
 
 Home page should be displayed
-    Wait Until Page Contains Element    css=app-home
-    Page should contain element    css=ul
+    Wait Until Page Contains Element    css=.mat-nav-list
+    Page should contain element    css=.mat-nav-list
 
 I can see ${name}
     Wait Until Element is not visible    css=div.loader
@@ -36,4 +41,4 @@ I click on ${name}
 
 I see ${name} details
     Wait Until Element is not visible    css=div.loader
-    Element should contain    css=h2   ${name}
+    Element should contain    css=.mat-card-title   ${name}

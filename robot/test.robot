@@ -10,6 +10,8 @@ View the pokemon list
     [Teardown]    Close Browser
 
 Display a pokemon
+    Open Application
+    Home page should be displayed
     I click on bulbasaur
     I see bulbasaur details
     [Teardown]    Close Browser

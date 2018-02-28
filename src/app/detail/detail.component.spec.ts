@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 import { APIService } from '../api';
 import { DetailComponent } from './detail.component';
@@ -16,10 +16,10 @@ describe('DetailComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ DetailComponent ],
       imports: [
-        HttpModule,
+        HttpClientModule,
         RouterTestingModule
       ],
-      providers: [APIService]
+      providers: [APIService, HttpClient]
     })
     .compileComponents();
   }));

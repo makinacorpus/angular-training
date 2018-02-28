@@ -17,7 +17,7 @@ export class APIService {
 
   listAll(): Observable<any[]> {
     if(!this.cache.all) {
-      return this.http.get<any>('http://pokeapi.co/api/v2/pokemon/')
+      return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/')
       .map(res => {
         this.cache.all = res.results;
         return this.cache.all;
@@ -29,7 +29,7 @@ export class APIService {
 
   get(id:string): Observable<any> {
     if(!this.cache[id]) {
-      return this.http.get<any>('http://pokeapi.co/api/v2/pokemon/' + id)
+      return this.http.get<any>('https://pokeapi.co/api/v2/pokemon/' + id)
       .map(pokemon => {
         if(pokemon.detail) {
           return {error: pokemon.detail};
